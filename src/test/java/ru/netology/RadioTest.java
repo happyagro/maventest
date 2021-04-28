@@ -71,4 +71,31 @@ class RadioTest {
         assertEquals(0, radio.getCurrentVolume());
     }
 
+    @Test
+    public void shouldChangeFieldStationTest(){
+        Radio radio = new Radio();
+        radio.setMaxStation(9);
+        assertEquals(9,radio.getMaxStation());
+        radio.setMinStation(0);
+        assertEquals(0,radio.getMinStation());
+        radio.setCurrentStation(8);
+        radio.setCurrentStation(60);
+        assertEquals(8, radio.getCurrentStation());
+        radio.setCurrentStation(-1);
+        assertEquals(8, radio.getCurrentStation());
+    }
+
+    @Test
+    public void shouldChangeFieldVolumeTest(){
+        Radio radio = new Radio();
+        radio.setMaxVolume(10);
+        assertEquals(10,radio.getMaxVolume());
+        radio.setMinVolume(0);
+        assertEquals(0,radio.getMinVolume());
+        radio.setCurrentVolume(7);
+        radio.setCurrentVolume(60);
+        assertEquals(7, radio.getCurrentVolume());
+        radio.setCurrentVolume(-1);
+        assertEquals(7, radio.getCurrentVolume());
+    }
 }

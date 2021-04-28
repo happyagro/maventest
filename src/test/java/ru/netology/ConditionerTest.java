@@ -42,7 +42,7 @@ class ConditionerTest {
     }
 
     @Test
-    public void shouldChangeFieldTest(){
+    public void shouldChangeFielConditionerdTest(){
         Conditioner conditioner = new Conditioner();
         conditioner.setMaxTemperature(40);
         assertEquals(40,conditioner.getMaxTemperature());
