@@ -44,4 +44,31 @@ class RadioTest {
         radio.remoteCurrentStation(-1);
         assertEquals(0,radio.getCurrentStation());
     }
+
+    @Test
+    public void nextCurrentVolumeTest(){
+        Radio radio = new Radio();
+        radio.setMaxVolume(10);
+        radio.setMinVolume(0);
+        radio.setCurrentVolume(4);
+        radio.nextCurrentVolume(3);
+        assertEquals(4,radio.getCurrentVolume());
+        radio.setCurrentVolume(10);
+        radio.nextCurrentVolume(11);
+        assertEquals(10, radio.getCurrentVolume());
+    }
+
+    @Test
+    public void prevCurrentVolumeTest(){
+        Radio radio = new Radio();
+        radio.setMaxVolume(10);
+        radio.setMinVolume(0);
+        radio.setCurrentVolume(4);
+        radio.prevCurrentVolume(3);
+        assertEquals(2,radio.getCurrentVolume());
+        radio.setCurrentVolume(0);
+        radio.prevCurrentVolume(0);
+        assertEquals(0, radio.getCurrentVolume());
+    }
+
 }

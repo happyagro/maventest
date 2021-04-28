@@ -4,7 +4,11 @@ public class Radio {
     private int maxStation;
     private int minStation;
     private int currentStation;
+    private int maxVolume;
+    private int minVolume;
+    private int currentVolume;
 
+    // Опции радиостанций
     public int getMaxStation() {
         return maxStation;
     }
@@ -59,6 +63,52 @@ public class Radio {
             this.currentStation = minStation;
         } else {
             this.currentStation = currentStation;
+        }
+    }
+    // Опции Громкости
+    public int getMaxVolume() {
+        return maxVolume;
+    }
+
+    public void setMaxVolume(int maxVolume) {
+        this.maxVolume = maxVolume;
+    }
+
+    public int getMinVolume() {
+        return minVolume;
+    }
+
+    public void setMinVolume(int minVolume) {
+        this.minVolume = minVolume;
+    }
+
+    public int getCurrentVolume() {
+        return currentVolume;
+    }
+
+    public void setCurrentVolume(int currentVolume) {
+        if (currentVolume > maxVolume) {
+            return;
+        }
+        if (currentVolume < minVolume) {
+            return;
+        }
+        this.currentVolume = currentVolume;
+    }
+
+    public void nextCurrentVolume(int currentVolume) {
+        if (currentVolume >= maxVolume) {
+            this.currentVolume = maxVolume;
+        } else {
+            this.currentVolume = currentVolume + 1;
+        }
+    }
+
+    public void prevCurrentVolume(int currentVolume) {
+        if (currentVolume <= minVolume) {
+            this.currentVolume = minVolume;
+        } else {
+            this.currentVolume = currentVolume - 1;
         }
     }
 }
