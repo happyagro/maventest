@@ -10,6 +10,7 @@ class RadioTest {
         Radio radio = new Radio();
         radio.setMaxStation(9);
         radio.setMinStation(0);
+        radio.setNumberStation(6);
         radio.setCurrentStation(4);
         radio.nextCurrentStation();
         assertEquals(5,radio.getCurrentStation());
@@ -30,6 +31,7 @@ class RadioTest {
         Radio radio = new Radio();
         radio.setMaxStation(9);
         radio.setMinStation(0);
+        radio.setNumberStation(6);
         radio.setCurrentStation(4);
         radio.prevCurrentStation();
         assertEquals(3,radio.getCurrentStation());
@@ -40,9 +42,10 @@ class RadioTest {
         Radio radio = new Radio();
         radio.setMaxStation(9);
         radio.setMinStation(0);
+        radio.setNumberStation(6);
         radio.setCurrentStation(0);
         radio.prevCurrentStation();
-        assertEquals(9, radio.getCurrentStation());
+        assertEquals(5, radio.getCurrentStation());
     }
 
     @Test
@@ -134,6 +137,7 @@ class RadioTest {
         Radio radio = new Radio();
         radio.setMaxStation(9);
         radio.setMinStation(0);
+        radio.setNumberStation(9);
         radio.setCurrentStation(8);
         radio.setCurrentStation(60);
         assertEquals(8, radio.getCurrentStation());
@@ -144,6 +148,7 @@ class RadioTest {
         Radio radio = new Radio();
         radio.setMaxStation(9);
         radio.setMinStation(0);
+        radio.setNumberStation(9);
         radio.setCurrentStation(8);
         radio.setCurrentStation(-1);
         assertEquals(8, radio.getCurrentStation());

@@ -1,17 +1,34 @@
 package ru.netology.domain;
 
 public class Radio {
-    private int maxStation;
-    private int minStation;
-    private int currentStation;
-    private int maxVolume;
-    private int minVolume;
-    private int currentVolume;
+    private int maxStation = 9; // Максмимальная станция
+    private int minStation = 0; // Минимальная станция
+    private int currentStation; // Выбранная станция
+    private int numberStation; // Количество станций
 
-    // Опции радиостанций
+    private int maxVolume; // Максимальная громкость
+    private int minVolume; // Минимальная громкость
+    private int currentVolume; // Выбранная громкость
+
+    // Опции Радиостанций
     public int getMaxStation() {
         return maxStation;
     }
+
+    public int getNumberStation() {
+        return numberStation;
+    }
+
+    public void setNumberStation(int numberStation) {
+        if (numberStation > maxStation) {
+            this.numberStation = 9;
+        }
+        if (numberStation < minStation) {
+            this.numberStation = 0;
+        }
+        this.numberStation = numberStation - 1;
+    }
+
 
     public void setMaxStation(int maxStation) {
         this.maxStation = maxStation;
@@ -30,7 +47,7 @@ public class Radio {
     }
 
     public void setCurrentStation(int currentStation) {
-        if (currentStation > maxStation) {
+        if (currentStation > numberStation) {
             return;
         }
         if (currentStation < minStation) {
@@ -41,7 +58,7 @@ public class Radio {
 
     public void nextCurrentStation() {
         int currentStation = this.currentStation;
-        if (currentStation >= maxStation) {
+        if (currentStation >= numberStation) {
             this.currentStation = minStation;
         } else {
             this.currentStation = currentStation + 1;
@@ -50,7 +67,7 @@ public class Radio {
 
     public void prevCurrentStation() {
         int currentStation = this.currentStation;
-        if (currentStation <= minStation) {
+        if (currentStation <= numberStation) {
             this.currentStation = maxStation;
         } else {
             this.currentStation = currentStation - 1;
@@ -60,8 +77,7 @@ public class Radio {
     public void remoteCurrentStation(int currentStation) {
         if (currentStation > maxStation) {
             this.currentStation = maxStation;
-        } else
-        if (currentStation < minStation) {
+        } else if (currentStation < minStation) {
             this.currentStation = minStation;
         } else {
             this.currentStation = currentStation;
