@@ -5,9 +5,8 @@ public class Radio {
     private int minStation = 0; // Минимальная станция
     private int currentStation; // Выбранная станция
     private int numberStation; // Количество станций
-
-    private int maxVolume; // Максимальная громкость
-    private int minVolume; // Минимальная громкость
+    private int maxVolume = 100; // Максимальная громкость
+    private int minVolume = 0; // Минимальная громкость
     private int currentVolume; // Выбранная громкость
 
     // Опции Радиостанций
@@ -26,9 +25,10 @@ public class Radio {
         if (numberStation < minStation) {
             this.numberStation = 0;
         }
-        this.numberStation = numberStation - 1;
+        if (numberStation <= maxStation & numberStation >= minStation) {
+            this.numberStation = numberStation - 1;
+        }
     }
-
 
     public void setMaxStation(int maxStation) {
         this.maxStation = maxStation;
@@ -67,8 +67,8 @@ public class Radio {
 
     public void prevCurrentStation() {
         int currentStation = this.currentStation;
-        if (currentStation <= numberStation) {
-            this.currentStation = maxStation;
+        if (currentStation <= minStation) {
+            this.currentStation = numberStation;
         } else {
             this.currentStation = currentStation - 1;
         }
@@ -77,12 +77,14 @@ public class Radio {
     public void remoteCurrentStation(int currentStation) {
         if (currentStation > maxStation) {
             this.currentStation = maxStation;
-        } else if (currentStation < minStation) {
+        } else
+        if (currentStation < minStation) {
             this.currentStation = minStation;
         } else {
             this.currentStation = currentStation;
         }
     }
+
     // Опции Громкости
     public int getMaxVolume() {
         return maxVolume;
