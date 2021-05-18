@@ -1,13 +1,23 @@
 package ru.netology.domain;
 
 public class Radio {
-    private int maxStation = 9; // Максмимальная станция
+    private int maxStation; // Максмимальная станция
     private int minStation = 0; // Минимальная станция
     private int currentStation; // Выбранная станция
     private int numberStation; // Количество станций
     private int maxVolume = 100; // Максимальная громкость
     private int minVolume = 0; // Минимальная громкость
     private int currentVolume; // Выбранная громкость
+
+    // constructor
+    public Radio(int maxStation) {
+        this.maxStation = maxStation;
+    }
+
+    // конструктор со стандартным значением кол-ва станций
+    public Radio() {
+        this.maxStation = 10;
+    }
 
     // Опции Радиостанций
     public int getMaxStation() {
@@ -53,6 +63,7 @@ public class Radio {
         if (currentStation < minStation) {
             return;
         }
+
         this.currentStation = currentStation;
     }
 
